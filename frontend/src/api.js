@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:3000';
+const API_BASE_URL = 'https://notes-fullstack-722o.onrender.com';
 
 async function request(path, { method = 'GET', body, token } = {}) {
   const headers = {

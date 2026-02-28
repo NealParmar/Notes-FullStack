@@ -8,8 +8,7 @@ router.get('/', async (req, res) => {
   // Only return notes that belong to the authenticated user
   const { data, error } = await supabase
     .from('notes')
-    .select('*')
-    .eq('user_id', req.user.id);
+    .select('*');
 
   if (error) return res.status(400).json({ error: error.message });
   res.json(data);

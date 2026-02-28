@@ -5,8 +5,19 @@ import { NotesDashboard } from './components/NotesDashboard.jsx';
 
 const TOKEN_KEY = 'notes_app_token';
 
+function getUserIdFromToken(token) {
+  if (!token) return null;
+  try {
+    const payload = JSON.parse(atob(token.split('.')[1]));
+    return payload.sub ?? null;
+  } catch {
+    return null;
+  }
+}
+
 export default function App() {
   const [token, setToken] = useState(() => localStorage.getItem(TOKEN_KEY) || '');
+  const currentUserId = getUserIdFromToken(token);
   const [notes, setNotes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -119,6 +130,7 @@ export default function App() {
             <NotesDashboard
               notes={notes}
               loading={loading}
+              currentUserId={currentUserId}
               onCreateNote={handleCreateNote}
               onUpdateNote={handleUpdateNote}
               onDeleteNote={handleDeleteNote}

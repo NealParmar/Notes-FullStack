@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { NoteForm } from './NoteForm.jsx';
 import { NoteList } from './NoteList.jsx';
 
-export function NotesDashboard({ notes, loading, onCreateNote, onUpdateNote, onDeleteNote, onReload }) {
+export function NotesDashboard({ notes, loading, currentUserId, onCreateNote, onUpdateNote, onDeleteNote, onReload }) {
   const [creating, setCreating] = useState(false);
 
   return (
@@ -49,7 +49,7 @@ export function NotesDashboard({ notes, loading, onCreateNote, onUpdateNote, onD
         ) : notes.length === 0 ? (
           <p className="text-sm text-slate-400">No notes yet. Create your first one.</p>
         ) : (
-          <NoteList notes={notes} onUpdateNote={onUpdateNote} onDeleteNote={onDeleteNote} />
+          <NoteList notes={notes} currentUserId={currentUserId} onUpdateNote={onUpdateNote} onDeleteNote={onDeleteNote} />
         )}
       </div>
     </div>

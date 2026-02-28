@@ -10,8 +10,6 @@ app.use(express.json());
 // No trailing slash – browsers send Origin without it
 const allowedOrigins = [
   'https://notes-full-stack-gamma.vercel.app',
-  'http://localhost:5173',
-  'http://localhost:3000',
 ];
 app.use(cors({
   origin(origin, callback) {

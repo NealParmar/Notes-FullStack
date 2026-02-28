@@ -7,7 +7,7 @@ import { authenticateUser } from './authmiddleWare.js';
 const app = express();
 app.use(express.json());
 
-app.use(cors({origin: 'http://localhost:5173',}),);
+app.use(cors({origin: 'https://notes-full-stack-gamma.vercel.app/',}),);
 app.use('/auth', authRoutes);
 app.use('/notes', authenticateUser, noteRoutes);
 
